@@ -1,42 +1,20 @@
 class UsersController < ApplicationController
-    skip_before_action :authenticate_request, only: [:create]
-    before_action :set_user, only: [:show, :destroy]
+  def create
+    user = User.new(user_params)
 
-    def index
-        @users = User.all
-        render json: @users, status: :ok
+    if user.save
+      render json: { user: UserSerializer.new(user) }
+
+    elsif user.errors.messages
+      render json: { errors: user.errors.messages }
+    else
+      render json: { error: 'User could not be created.' }
     end
+  end
 
-    def show
-        render json: @users, status: :ok
-    end
+  private
 
-    def create
-        @user = User.new(user_params)
-        if @user.save
-            render json: @user, status: :created
-        else
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-        end
-    end
-
-    def destroy
-        @user.destroy
-    end
-
-    def update
-        unless @user.update(user_params)
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-        end
-    end
-
-    private
-
-    def user_params
-        params.permit(:username, :email, :password)
-    end
-
-    def set_user
-        @user = User.find(params[:id])
-    end
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
 end
