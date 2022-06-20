@@ -30,7 +30,7 @@ class Api::V1::MerchantsController < ApplicationController
             https.use_ssl = true
 
             request = Net::HTTP::Post.new(url)
-            request["Authorization"] = "8727nuVZ82xjB3v46u754m26N98ET55t"
+            request["Authorization"] = ENV["API_KEY"]
             request["Content-Type"] = "application/json"
             
             request.body = JSON.dump(data)
