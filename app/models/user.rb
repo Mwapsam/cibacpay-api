@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   require 'securerandom'
-  has_many :merchants
+  has_one :merchants
 
   has_secure_password
 
