@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/login", to: "authentication#create"
     get "/authorized", to: "authentication#show"
-  # namespace :api, defaults: { format: :json } do
-  #   namespace :v1 do
-  #     get 'hello', to: 'hello#index'
-  #   end
-  # end
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :merchants, only: [:create]
+    end
+  end
 end
