@@ -1,10 +1,10 @@
-# Hello Rails
+# CIBACPAY API
 
-> This app is the demonstration of API connect between Ruby on Rails and React..
+> This is an API for signing merchants to CIBACPAY NMI Partner Portal> It is based on the NMI Merchant onboarding API
 
 
 > ### Frontend Link
-> [Click Here](https://github.com/Mwapsam/Hello-rails-frontend)
+> [Click Here](https://github.com/Mwapsam/cibacpay-api)
 
 ## Built With
 
@@ -22,8 +22,8 @@
 
 ### Setup
 ```
-git clone https://github.com/Mwapsam/Hello-rails-api.git
-cd Hello-rails-api
+git clone https://github.com/Mwapsam/cibacpay-api.git
+cd cibacpay-api
 ```
 ### Install
 ```
