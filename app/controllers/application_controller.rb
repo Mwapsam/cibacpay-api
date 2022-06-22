@@ -4,7 +4,9 @@ class ApplicationController < ActionController::API
   end
 
   def issue_token(user)
-    JWT.encode({ user_id: user.id }, jwt_key, 'HS256')
+    exp = 15.minutes.from_now.to_i
+    payload = { user_id: user.id, exp: exp }
+    JWT.encode(payload, jwt_key, 'HS256')
   end
 
   def decoded_token
